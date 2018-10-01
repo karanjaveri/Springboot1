@@ -1,18 +1,35 @@
 package com.example;
 
-import java.util.Map;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
+import java.util.HashSet;
+
+import java.util.Set;
+
+import javax.annotation.PostConstruct;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import com.example.domain.Player;
+import com.example.domain.Team;
+
+@RestController
 public class hithere {
+	
+	private Team team;
+	@PostConstruct
+	public void init() {
+		
+		Set<Player> players=new HashSet<>();
+		players.add(new Player("Thomas","pitcher"));
+		players.add(new Player("Jackson","shortstop"));
+		team=new Team("California", "Peanuts",players);
+		
+	}
 
-	@RequestMapping("/hi/{name}")
-	public String hiThere(Map model, @PathVariable String name)
+	@RequestMapping("/hi")
+	public Team hiThere()
 	{
-		model.put("name", name);
-		return "hello";
+		return team;
 	}
 }
