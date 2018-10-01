@@ -19,6 +19,9 @@ public class MicroservicesbootApplication extends SpringBootServletInitializer {
 	/*
 	 * used when run as WAR
 	 */
+	/*
+	 * used when run as WAR
+	 */
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		// TODO Auto-generated method stub
