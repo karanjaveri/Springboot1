@@ -2,14 +2,29 @@ package com.example.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
+@Entity
 public class Team {
-
+/*
+ * if you want to add the Springdata JPA features then just include @Entity,@Id @GeneratedValue,	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="teamId") to your code. you can also check in Players.java for reference.  
+ */
+	
+	@Id @GeneratedValue
+	Long id;
 	String name;
 	String location;
 	String mascott;
+	@OneToMany(cascade=CascadeType.ALL)
+	@JoinColumn(name="teamId")
 	Set<Player> players;
 	
 	
